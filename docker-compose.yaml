@@ -1,14 +1,23 @@
-version: '2.3'
+version: '3'
 
 services: 
 
     app:
         build: .
         container_name: app
+        entrypoint: dockerize -template ./.docker/app/.env:.env -wait tcp://db:3306 -timeout 40s ./.docker/entrypoint.sh
         volumes: 
             - .:/var/www
         networks: 
             - my-network
+        environment: 
+            - DB_HOST=db
+            - DB_DATABASE=laravel
+            - DB_USERNAME=root
+            - DB_PASSWORD=root    
+        depends_on: 
+            - db
+            - redis
 
     nginx:
         build: .docker/nginx
@@ -21,6 +30,9 @@ services:
             - .:/var/www   
         networks: 
             - my-network 
+        environment: 
+            - APP_HOST=app
+            - APP_PORT=9000
 
     redis:
         image: redis:alpine
@@ -39,10 +51,6 @@ services:
             - ./.docker/dbdata:/var/lib/mysql
         ports:
             - "3306:3306"
-        environment: 
-            - MYSQL_DATABASE=laravel
-            - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_USER=root
         networks: 
             - my-network          
 
