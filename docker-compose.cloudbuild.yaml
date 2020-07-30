@@ -1,0 +1,60 @@
+version: '3'
+
+services: 
+
+    app:
+        build: .
+        container_name: app
+        #entrypoint: dockerize -template ./.docker/app/.env:.env -wait tcp://db:3306 -timeout 40s ./.docker/entrypoint.sh
+        volumes: 
+            - .:/var/www
+        networks: 
+            - my-network
+        # environment: 
+        #     - DB_HOST=db
+        #     - DB_DATABASE=laravel
+        #     - DB_USERNAME=root
+        #     - DB_PASSWORD=root    
+        depends_on: 
+            - db
+            - redis
+
+    nginx:
+        build: .docker/nginx
+        container_name: nginx
+        tty: true
+        restart: always
+        ports:
+            - "8000:80"
+        volumes:
+            - .:/var/www   
+        networks: 
+            - my-network 
+        environment: 
+            - APP_HOST=app
+            - APP_PORT=9000
+
+    redis:
+        image: redis:alpine
+        expose: 
+            - 6379
+        networks:
+            - my-network
+
+    db:
+        build: .docker/database
+        command: --innodb-use-native-aio=0 
+        container_name: db
+        tty: true
+        restart: always
+        volumes: 
+            - ./.docker/dbdata:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        networks: 
+            - my-network          
+
+  
+networks: 
+    my-network: 
+        driver: bridge
