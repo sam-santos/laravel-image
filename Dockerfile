@@ -22,7 +22,7 @@ RUN rm -rf /var/www/html
 #          php artisan config:cache
       
 
-#COPY . /var/www
+COPY . /var/www
 RUN ln -s public html
 
 RUN usermod -u 1000 www-data
