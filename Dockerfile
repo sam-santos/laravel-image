@@ -13,6 +13,7 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 
 
 WORKDIR /var/www
+RUN chmod -R 755 /var/www
 RUN rm -rf /var/www/html
 
 
