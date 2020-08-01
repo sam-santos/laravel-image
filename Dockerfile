@@ -16,7 +16,7 @@ WORKDIR /var/www
 RUN chmod -R 755 /var/www
 RUN rm -rf /var/www/html
 
-
+RUN composer install
 # RUN composer install && \
 #          cp .env.example .env && \
 #          php artisan key:generate && \
