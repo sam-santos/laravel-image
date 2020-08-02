@@ -11,13 +11,13 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 WORKDIR /var/www
+RUN chmod -R 755 /var/www
 RUN rm -rf /var/www/html
 RUN ln -s public html
 COPY . /var/www
-RUN chmod -R 755 /var/www
 
-RUN usermod -u 1000 www-data
-USER www-data
+# RUN usermod -u 1000 www-data
+# USER www-data
 
 EXPOSE 9000
 ENTRYPOINT [ "php-fpm" ]
