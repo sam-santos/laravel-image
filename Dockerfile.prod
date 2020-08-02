@@ -11,6 +11,7 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 WORKDIR /var/www
+RUN chmod -R 755 /var/www
 RUN rm -rf /var/www/html
 RUN ln -s public html
 COPY . /var/www
