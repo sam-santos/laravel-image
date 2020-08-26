@@ -18,8 +18,6 @@ services:
         #     - DB_DATABASE=laravel
         #     - DB_USERNAME=root
         #     - DB_PASSWORD=root
-        links: 
-            - db 
         depends_on: 
             - db
             - redis
@@ -38,6 +36,9 @@ services:
         environment: 
             - APP_HOST=app
             - APP_PORT=9000
+        depends_on:
+            - app
+            - db
 
     redis:
         image: redis:alpine
