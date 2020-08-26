@@ -17,7 +17,9 @@ services:
         #     - DB_HOST=db
         #     - DB_DATABASE=laravel
         #     - DB_USERNAME=root
-        #     - DB_PASSWORD=root    
+        #     - DB_PASSWORD=root
+        links: 
+            - db 
         depends_on: 
             - db
             - redis
@@ -55,9 +57,10 @@ services:
         ports:
             - "3306:3306"
         environment: 
-            - MYSQL_DATABASE=laravel
-            - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_USER=root
+            - DB_HOST=db
+            - DB_DATABASE=laravel
+            - DB_USERNAME=root
+            - DB_PASSWORD=root    
         networks: 
             - my-network          
 
