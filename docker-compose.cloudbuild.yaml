@@ -55,10 +55,9 @@ services:
         ports:
             - "3306:3306"
         environment: 
-            - DB_HOST=db
-            - DB_DATABASE=laravel
-            - DB_USERNAME=root
-            - DB_PASSWORD=root    
+            - MYSQL_DATABASE=laravel
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_USER=root
         networks: 
             - my-network          
 
