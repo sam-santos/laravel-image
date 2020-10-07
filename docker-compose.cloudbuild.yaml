@@ -16,7 +16,7 @@ services:
             - my-network
         environment: 
             - DB_HOST=db
-            - DB_DATABASE=laravel
+            - DB_DATABASE=code_videos
             - DB_USERNAME=root
             - DB_PASSWORD=root
         depends_on: 
@@ -66,7 +66,7 @@ services:
             # - DB_DATABASE=laravel
             # - DB_USERNAME=root
             # - DB_PASSWORD=root 
-            - MYSQL_DATABASE=laravel
+            - MYSQL_DATABASE=code_videos
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_USER=root   
         networks: 
