@@ -41,7 +41,7 @@ services:
         depends_on:
             - app
             - db
-        command: ["./wait-for-it.sh", "db:3306", "-timeout=120"]     
+        command: ["bash", "-c", "./wait-for-it.sh", "db:3306", "-timeout=120"]     
 
     redis:
         image: redis:alpine
