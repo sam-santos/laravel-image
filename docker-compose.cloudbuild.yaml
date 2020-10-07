@@ -14,15 +14,15 @@ services:
             - .:/var/www
         networks: 
             - my-network
-        # environment: 
-        #     - DB_HOST=db
-        #     - DB_DATABASE=laravel
-        #     - DB_USERNAME=root
-        #     - DB_PASSWORD=root
+        environment: 
+            - DB_HOST=db
+            - DB_DATABASE=laravel
+            - DB_USERNAME=root
+            - DB_PASSWORD=root
         depends_on: 
             - db
             - redis
-        command: sh -c './wait-for db:3306 -t 40 -- php-fpm'
+        #command: sh -c './wait-for db:3306 -t 40 -- php-fpm'
 
     nginx:
         build: .docker/nginx
@@ -62,10 +62,13 @@ services:
         ports:
             - "3306:3306"
         environment: 
-            - DB_HOST=db
-            - DB_DATABASE=laravel
-            - DB_USERNAME=root
-            - DB_PASSWORD=root    
+            # - DB_HOST=db
+            # - DB_DATABASE=laravel
+            # - DB_USERNAME=root
+            # - DB_PASSWORD=root 
+            - MYSQL_DATABASE=laravel
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_USER=root   
         networks: 
             - my-network          
 
