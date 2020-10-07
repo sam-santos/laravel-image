@@ -22,7 +22,7 @@ services:
         depends_on: 
             - db
             - redis
-        #command: ["./wait-for-it.sh", "db:3306", "-timeout=40"]    
+        command: sh -c './wait-for db:3306 -t 40 -- php-fpm'
 
     nginx:
         build: .docker/nginx
@@ -41,7 +41,7 @@ services:
         depends_on:
             - app
             - db
-        command: ["bash", "-c", "./wait-for-it.sh", "db:3306", "-timeout=120"]     
+        #command: ["bash", "-c", "./wait-for-it.sh", "db:3306", "-timeout=120"]     
 
     redis:
         image: redis:alpine

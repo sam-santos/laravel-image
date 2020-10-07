@@ -20,6 +20,6 @@ COPY . /var/www
 # USER www-data
 
 EXPOSE 9000
-# ENTRYPOINT [ "php-fpm" ]
-ENTRYPOINT [ "/bin/bash", "-c" ]
-CMD [ "./wait-for-it.sh", "db:3306", "-timeout=120", "php-fpm" ]
+##ENTRYPOINT [ "php-fpm" ]
+#ENTRYPOINT [ "/bin/bash", "-c" ]
+#CMD [ "./wait-for-it.sh", "db:3306", "-timeout=120", "php-fpm" ]
