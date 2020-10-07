@@ -42,7 +42,7 @@ services:
             - app
             - db
         #command: ["bash", "-c", "./wait-for-it.sh", "db:3306", "-timeout=120"]   
-        command: sh -c './wait-for db:3306 -t 60'  
+        #command: sh -c './wait-for db:3306 -t 60'  
 
     redis:
         image: redis:alpine
