@@ -79,6 +79,6 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 ## Docker Hub Image
-https://hub.docker.com/repository/docker/samsantos/devops-laravel
+https://hub.docker.com/r/samsantos/devops-laravel
 
 https://hub.docker.com/r/samsantos/laravel-optimized
