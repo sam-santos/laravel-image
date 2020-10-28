@@ -81,4 +81,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## Docker Hub Image
 https://hub.docker.com/repository/docker/samsantos/devops-laravel
 
-https://hub.docker.com/repository/docker/samsantos/laravel-optimized
+https://hub.docker.com/r/samsantos/laravel-optimized
